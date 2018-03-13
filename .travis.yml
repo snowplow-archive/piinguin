@@ -1,0 +1,21 @@
+language: scala
+scala:
+  - 2.12.6
+jdk:
+  - oraclejdk8
+before_deploy: pip install --user release-manager==0.3.0
+deploy:
+  skip_cleanup:
+    true
+  provider: script
+  script: release-manager --config .release.yaml --make-artifact --upload-artifact --check-version; .travis/deploy.sh $TRAVIS_TAG $?;
+  on:
+    tags: true
+env:
+  global:
+  - secure: BINTRAY_SNOWPLOW_MAVEN_API_KEY
+  - secure: BINTRAY_SNOWPLOW_MAVEN_USER
+  - SONA_USER=snowplow
+  - secure: SONA_PASS
+  - secure: BINTRAY_SNOWPLOW_GENERIC_API_KEY
+  - secure: BINTRAY_SNOWPLOW_GENERIC_USER
