@@ -1,0 +1,13 @@
+---------------------
+Running server tests:
+---------------------
+
+vagrant ssh
+cd /vagrant/2-server
+sbt test
+
+-------------------
+Supporting services
+-------------------
+
+- DyanmoDb local is running on port $DYNAMODB_PORT
