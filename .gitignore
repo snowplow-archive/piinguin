@@ -1,0 +1,6 @@
+.vagrant
+target/
+project/project/**
+*.log
+vagrant/roles/
+dynamodb-local/
