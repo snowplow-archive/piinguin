@@ -25,7 +25,7 @@ service Piinguin {
 
   // Bidirectional streaming to work on N PII records
   rpc CreatePiiRecords(stream CreatePiiRecordRequest) returns (stream ChangeRecordResponse) {}
-  rpc ReadPiiRecords(stream ReadPiiRecordRequest) returns (stream ReadPiiRecordReply) {}
+  rpc ReadPiiRecords(stream ReadPiiRecordRequest) returns (stream ReadPiiRecordResponse) {}
   rpc DeletePiiRecords(stream DeletePiiRecordRequest) returns (stream ChangeRecordResponse) {}  
 }
 
