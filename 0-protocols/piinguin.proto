@@ -19,9 +19,9 @@ package com.snowplowanalytics.piinguin.server.generated.protocols;
 
 service Piinguin {
   // Simple single PII record operations
-  rpc CreatePiiRecord(CreatePiiRecordRequest) returns (CreatePiiRecordReply) {}
-  rpc ReadPiiRecord(ReadPiiRecordRequest) returns (ReadPiiRecordReply) {}
-  rpc DeletePiiRecord(DeletePiiRecordRequest) returns (DeletePiiRecordReply) {}
+  rpc CreatePiiRecord(CreatePiiRecordRequest) returns (ChangeRecordResponse) {}
+  rpc ReadPiiRecord(ReadPiiRecordRequest) returns (ReadPiiRecordResponse) {}
+  rpc DeletePiiRecord(DeletePiiRecordRequest) returns (ChangeRecordResponse) {}
 
   // Bidirectional streaming to work on N PII records
   rpc CreatePiiRecords(stream CreatePiiRecordRequest) returns (stream ChangeRecordResponse) {}
