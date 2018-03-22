@@ -26,7 +26,7 @@ service Piinguin {
   // Bidirectional streaming to work on N PII records
   rpc CreatePiiRecords(stream CreatePiiRecordRequest) returns (stream ChangeRecordResponse) {}
   rpc ReadPiiRecords(stream ReadPiiRecordRequest) returns (stream ReadPiiRecordResponse) {}
-  rpc DeletePiiRecords(stream DeletePiiRecordRequest) returns (stream ChangeRecordResponse) {}  
+  rpc DeletePiiRecords(stream DeletePiiRecordRequest) returns (stream ChangeRecordResponse) {}
 }
 
 // Requests
@@ -34,6 +34,9 @@ service Piinguin {
 message PiiRecord {
   string modifiedValue = 1;
   string originalValue = 2;
+  string fieldName = 3;
+  string jsonPath = 4;
+  string schema = 5;
 }
 
 message CreatePiiRecordRequest {
@@ -42,6 +45,7 @@ message CreatePiiRecordRequest {
 
 message DeletePiiRecordRequest {
   string modifiedValue = 1;
+  string fieldName = 2;
 }
 
 message ReadPiiRecordRequest {
@@ -55,7 +59,8 @@ message ReadPiiRecordRequest {
     LEGITIMATE_INTERESTS = 5;
   }
   string modifiedValue = 1;
-  LawfulBasisForProcessing processingBasis = 2;
+  string fieldName =2;
+  LawfulBasisForProcessing processingBasis = 3;
 }
 
 // Responses
