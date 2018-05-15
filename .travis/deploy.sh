@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 
 tag_version=$1
 
