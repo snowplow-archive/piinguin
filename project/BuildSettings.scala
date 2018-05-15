@@ -37,9 +37,9 @@ object BuildSettings {
 
   lazy val commonSettings = basicSettings ++ formatting ++ commonDependencies
 
-  lazy val clientSettings = Seq(name := "piinguin-client") ++ commonSettings ++ clientDependencies
+  lazy val clientSettings = Seq(name := "piinguin-client") ++ publishSettings ++ commonSettings ++ clientDependencies
 
-  lazy val serverSettings = Seq(name := "piinguin-server") ++ localDynamoDbSettings ++ commonSettings ++ serverDependencies ++ assemblySettings
+  lazy val serverSettings = Seq(name := "piinguin-server") ++ publishSettings ++ localDynamoDbSettings ++ commonSettings ++ serverDependencies ++ assemblySettings
 
   lazy val protoGenSettings = Seq(name := "piinguin-protocols") ++ basicSettings ++ grpcSources ++ grpcGenDependencies
 
@@ -129,4 +129,26 @@ object BuildSettings {
     scalafmtConfig := file(".scalafmt.conf"),
     scalafmtOnCompile := true,
     scalafmtVersion := "1.3.0")
+
+  lazy val publishSettings = bintraySettings ++ Seq(
+    publishMavenStyle := true,
+    publishArtifact := true,
+    publishArtifact in Test := false,
+    licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
+    bintrayOrganization := Some("snowplow"),
+    bintrayRepository := "snowplow-maven",
+    pomIncludeRepository := { _ => false },
+    homepage := Some(url("http://snowplowanalytics.com")),
+    scmInfo := Some(ScmInfo(url("https://github.com/snowplow-incubator/piinguin"),
+      "scm:git@github.com:snowplow-incubator/piinguin.git")),
+    pomExtra := (
+      <developers>
+        <developer>
+          <name>Snowplow Analytics Ltd</name>
+          <email>support@snowplowanalytics.com</email>
+          <organization>Snowplow Analytics Ltd</organization>
+          <organizationUrl>http://snowplowanalytics.com</organizationUrl>
+        </developer>
+      </developers>)
+  )
 }
