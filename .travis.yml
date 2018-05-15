@@ -9,7 +9,8 @@ deploy:
     true
   provider: script
   script:
-  - "./.travis/deploy.sh $TRAVIS_TAG"
+  - echo "$TRAVIS_HOME"
+  - $TRAVIS_HOME/.travis/deploy.sh $TRAVIS_TAG
   - release-manager --config .release.yml --make-artifact --upload-artifact --check-version
   on:
     tags: true
