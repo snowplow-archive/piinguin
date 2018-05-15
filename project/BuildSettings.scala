@@ -33,6 +33,10 @@ import com.lucidchart.sbt.scalafmt.ScalafmtCorePlugin.autoImport._
 // Local DynamoDB plugin
 import com.localytics.sbt.dynamodb.DynamoDBLocalKeys._
 
+// Bintray plugin
+import bintray.BintrayPlugin._
+import bintray.BintrayKeys._
+
 object BuildSettings {
 
   lazy val commonSettings = basicSettings ++ formatting ++ commonDependencies
