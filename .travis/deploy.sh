@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 
 tag_version=$1
 
@@ -17,8 +16,11 @@ cd $TRAVIS_BUILD_DIR
 
 project_version=$(sbt version -Dsbt.log.noformat=true | perl -ne 'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/' | head -n 1 | tr -d '\n')
 if [ "${project_version}" == "${tag_version}" ]; then
+    echo "Publishing.."
     sbt client/publish
+    echo "Syncing.."
     sbt client/bintraySyncMavenCentral
+    echo "Done"
 else
     echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting!"
     exit 1
