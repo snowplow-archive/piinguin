@@ -43,7 +43,7 @@ object BuildSettings {
 
   lazy val protoGenSettings = Seq(name := "piinguin-protocols") ++ basicSettings ++ grpcSources ++ grpcGenDependencies
 
-  lazy val e2eTestSettings = e2eTestDependencies ++ formatting ++ clientDependencies
+  lazy val e2eTestSettings = e2eTestDependencies ++ basicSettings ++ formatting ++ clientDependencies
 
   lazy val basicSettings = Seq(
     organization := "com.snowplowanalytics",
