@@ -26,3 +26,4 @@ else
     echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting!"
     exit 1
 fi
+
