@@ -25,7 +25,7 @@ packages:
     version  : <%= ENV['TRAVIS_TAG'] %>
 
     # Required IF '--check-version' is passed: will assert that both versions are the same
-    build_version : <%= FUNC['sbt_version(.)'] %>
+    build_version : <%= ENV['SERVER_VERSION'] %>
 
     build_commands:
       - sbt server/assembly
