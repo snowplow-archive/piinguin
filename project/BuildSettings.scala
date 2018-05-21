@@ -51,7 +51,7 @@ object BuildSettings {
 
   lazy val basicSettings = Seq(
     organization := "com.snowplowanalytics",
-    version := "0.1.0-rc1",
+    version := "0.1.0-M1",
     scalaVersion := "2.12.6",
     scalacOptions := compilerOptions,
     scalacOptions in Test := Seq("-Yrangepos"),
