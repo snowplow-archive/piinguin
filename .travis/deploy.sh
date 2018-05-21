@@ -23,7 +23,7 @@ if [ "${project_version}" == "${tag_version}" ]; then
     sbt client/bintraySyncMavenCentral
     echo "Done"
 else
-    echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting!"
-    exit 1
+    echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting deploy!"
+    exit 0
 fi
 

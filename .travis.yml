@@ -8,7 +8,9 @@ deploy:
   skip_cleanup:
     true
   provider: script
-  script: .travis/deploy.sh $TRAVIS_TAG && SERVER_VERSION=$(sbt server/version -Dsbt.log.noformat=true | perl -ne 'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/' | head -n 1 | tr -d '\n') release-manager --config .release.yaml --make-artifact --upload-artifact --check-version
+  script:
+    - SERVER_VERSION=$(sbt server/version -Dsbt.log.noformat=true | perl -ne 'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/' | head -n 1 | tr -d '\n') release-manager --config .release.yaml --make-artifact --upload-artifact --check-version
+    - .travis/deploy.sh $TRAVIS_TAG
   on:
     tags: true
 env:
