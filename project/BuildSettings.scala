@@ -45,7 +45,7 @@ object BuildSettings {
 
   lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0") ++ publishSettings ++ localDynamoDbSettings ++ commonSettings ++ serverDependencies ++ assemblySettings
 
-  lazy val protoGenSettings = Seq(name := "piinguin-protocols") ++ basicSettings ++ grpcSources ++ grpcGenDependencies
+  lazy val protoGenSettings = Seq(name := "piinguin-protocols", version := "0.1.0") ++ basicSettings ++ grpcSources ++ grpcGenDependencies
 
   lazy val e2eTestSettings = e2eTestDependencies ++ basicSettings ++ formatting ++ clientDependencies
 
