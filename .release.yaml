@@ -25,7 +25,7 @@ packages:
     version  : <%= ENV['TRAVIS_TAG'] %>
 
     # Required IF '--check-version' is passed: will assert that both versions are the same
-    build_version : <%= ENV['SERVER_VERSION'] %>
+    build_version : <%= CMD['sbt server/version -Dsbt.log.noformat=true | perl -ne \'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/\' | head -n 1 | tr -d \'\n\''] %>
 
     build_commands:
       - sbt server/assembly
