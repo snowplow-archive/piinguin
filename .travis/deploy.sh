@@ -13,6 +13,17 @@ EOF
 
 cd $TRAVIS_BUILD_DIR
 
+project_version=$(sbt protocols/version -Dsbt.log.noformat=true | perl -ne 'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/' | head -n 1 | tr -d '\n')
+if [ "${project_version}" == "${tag_version}" ]; then
+    echo "Publishing.."
+    sbt protocols/publish
+    echo "Syncing.."
+    sbt protocols/bintraySyncMavenCentral
+    echo "Done"
+else
+    echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting protocols deploy!"
+fi
+
 project_version=$(sbt client/version -Dsbt.log.noformat=true | perl -ne 'print "$1\n" if /(\d+\.\d+\.\d+[^\r\n]*)/' | head -n 1 | tr -d '\n')
 if [ "${project_version}" == "${tag_version}" ]; then
     echo "Publishing.."
@@ -23,4 +34,3 @@ if [ "${project_version}" == "${tag_version}" ]; then
 else
     echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting client deploy!"
 fi
-
