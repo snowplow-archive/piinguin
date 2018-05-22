@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 tag_version=$1
-previous_exit=$2
 
 mkdir ~/.bintray/
 file=$HOME/.bintray/.credentials
@@ -24,5 +23,5 @@ if [ "${project_version}" == "${tag_version}" ]; then
     exit 0
 else
     echo "Tag version '${tag_version}' doesn't match version in scala project ('${project_version}'). Aborting client deploy!"
-    exit $previous_exit
+    exit 1
 fi

@@ -8,7 +8,7 @@ deploy:
   skip_cleanup:
     true
   provider: script
-  script: release-manager --config .release.yaml --make-artifact --upload-artifact --check-version; .travis/deploy.sh $TRAVIS_TAG $?;
+  script: release-manager --config .release.yaml --make-artifact --upload-artifact --check-version || .travis/deploy.sh $TRAVIS_TAG
   on:
     tags: true
 env:
