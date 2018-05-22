@@ -49,7 +49,7 @@ object BuildSettings {
                               grpcSources ++
                               grpcGenDependencies
 
-  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0-rc4") ++
+  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0-rc5") ++
                               publishSettings ++
                               localDynamoDbSettings ++
                               commonSettings ++
