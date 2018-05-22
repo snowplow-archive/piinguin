@@ -42,7 +42,7 @@ object BuildSettings {
 
   lazy val commonSettings = basicSettings ++ formatting ++ commonDependencies
 
-  lazy val clientSettings = Seq(name := "piinguin-client", version := "0.1.0-M5") ++
+  lazy val clientSettings = Seq(name := "piinguin-client", version := "0.1.0-M6") ++
                               publishSettings ++
                               commonSettings ++
                               clientDependencies ++
