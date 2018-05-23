@@ -49,7 +49,7 @@ object BuildSettings {
                               grpcSources ++
                               grpcGenDependencies
 
-  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0-rc6") ++
+  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0-rc7") ++
                               publishSettings ++
                               localDynamoDbSettings ++
                               commonSettings ++
@@ -121,6 +121,7 @@ object BuildSettings {
       Dependencies.Libraries.scalatest))
 
   lazy val assemblySettingsServer = Seq(
+    assemblyJarName in assembly := { s"${moduleName.value}-${version.value}.jar" },
     assemblyMergeStrategy in assembly := {
       case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.first
       case x =>
