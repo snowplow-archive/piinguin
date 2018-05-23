@@ -35,7 +35,7 @@ packages:
         # The artifact name is composed like so: {{prefix}}{{version}}{{suffix}}.jar
       - prefix : "snowplow_piinguin_server_"
         suffix : ""
-        type   : "asis"
+        type   : "zip"
 
         # The binaries to put in the zip
         binary_paths:
