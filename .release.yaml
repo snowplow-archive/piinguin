@@ -39,4 +39,4 @@ packages:
 
         # The binaries to put in the zip
         binary_paths:
-          - 2-servers/target/scala-2.12/piinguin-server-assembly-<%= ENV['TRAVIS_TAG'] %>.jar
+          - 2-servers/target/scala-2.12/piinguin-server-<%= ENV['TRAVIS_TAG'] %>.jar
