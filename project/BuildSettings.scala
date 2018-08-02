@@ -42,14 +42,14 @@ object BuildSettings {
 
   lazy val commonSettings = basicSettings ++ formatting ++ commonDependencies
 
-  lazy val clientSettings = Seq(name := "piinguin-client", version := "0.1.0") ++
+  lazy val clientSettings = Seq(name := "piinguin-client", version := "0.1.1") ++
                               publishSettings ++
                               commonSettings ++
                               clientDependencies ++
                               grpcSources ++
                               grpcGenDependencies
 
-  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.0") ++
+  lazy val serverSettings = Seq(name := "piinguin-server", version := "0.1.1") ++
                               publishSettings ++
                               localDynamoDbSettings ++
                               commonSettings ++
